@@ -353,6 +353,29 @@ export default function Terminal() {
     }
   };
 
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      if (scrollTop + windowHeight >= docHeight - 10) {
+        setShowTopBtn(true);
+      } else {
+        setShowTopBtn(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="mainContainer">
       <MatrixRainingLetters custom_class="matrix-rain-bg"/>
@@ -392,7 +415,10 @@ export default function Terminal() {
       <Experience />
       <Projects />
       <Contact />
-       <footer style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "2rem", borderTop: "1px solid rgba(0, 255, 64, 0.12)", fontFamily: "'Share Tech Mono', monospace", fontSize: "0.65rem", color: "rgba(0, 255, 64, 0.52)", letterSpacing: "0.15em" }}>
+      {showTopBtn && (
+        <button className="scrollTopBtn" onClick={scrollToTop} aria-label="Scroll to top"> ↑ </button>
+      )}
+      <footer style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "2rem", borderTop: "1px solid rgba(0, 255, 64, 0.12)", fontFamily: "'Share Tech Mono', monospace", fontSize: "0.65rem", color: "rgba(0, 255, 64, 0.52)", letterSpacing: "0.15em" }}>
         © 2026 SINDHURA &nbsp;|&nbsp; BUILT WITH ♥
       </footer>
     </div>

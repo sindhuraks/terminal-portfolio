@@ -748,3 +748,22 @@
   color: #00ff41;
   text-shadow: 0 0 8px rgba(0,255,65,0.4);
 }
+
+.scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  color: #00ff00;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  border-radius: 2px;
+}
+
+.scrollTopBtn:hover {
+  transform: translateY(-2px);
+  background: transparent;
+}
