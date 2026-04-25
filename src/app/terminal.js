@@ -57,12 +57,12 @@ const EXPERIENCE = [
     role: 'Software Engineer Apprentice',
     company: 'American Express',
     location: 'Gainesville, FL',
-    period: 'Jan 2026 – Present',
+    period: 'Jan 2026 – Apr 2026',
     type: 'APPRENTICESHIP',
-    tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs'],
+    tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs', 'React.js', 'Next.js'],
     bullets: [
-      'Architected scalable RESTful APIs using Spring Boot for log ingestion, real-time anomaly detection, and anomaly detail retrieval.',
-      'Integrated Anthropic Claude Haiku with prompt engineering to build an AI agent for automated root cause analysis and mitigation planning.',
+      'Built Spring Boot microservices for log anomaly detection, integrating OpenAI, Claude, and Llama APIs; delivered up to 95% correctness and relevance and 90% completeness for automated root-cause analysis.',
+      'Implemented LLM-as-a-Judge (Claude Sonnet) and anomaly recurrence detection, improving response quality to 90–95% clarity/relevance and boosting correctness/completeness by 20–40%.',
     ],
   },
   {
@@ -75,6 +75,7 @@ const EXPERIENCE = [
     bullets: [
       'Leveraged HuggingFace transformers and LLMs to enhance model reasoning through Chain of Thought prompting.',
       'Contributing to research on building, fine-tuning, and evaluating NLP models for explainable and trustworthy QA systems.',
+      'Contributing to research involving agent safety evaluation.'
     ],
   },
   {
