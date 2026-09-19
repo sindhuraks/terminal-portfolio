@@ -64,7 +64,7 @@ const EXPERIENCE = [
     location: 'Gainesville, FL',
     period: 'Jan 2026 – Apr 2026',
     type: 'APPRENTICESHIP',
-    tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs', 'React.js', 'Next.js'],
+    tags: ['Spring Boot', 'PostgreSQL', 'LLM APIs', 'REST APIs', 'React.js', 'Next.js'],
     bullets: [
       'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages, identify their first occurrence, integrating OpenAI, Claude, and Llama APIs for automated log analysis; added retry mechanism for API overload failures to improve resilience.',
       'Implemented LLM-as-a-Judge (Claude Sonnet) to evaluate responses on correctness, completeness, clarity, and answer relevance, improving response quality to 90–95% for clarity/relevance and 85–90% for correctness/completeness.',
@@ -76,7 +76,7 @@ const EXPERIENCE = [
     location: 'Gainesville, FL',
     period: 'Aug 2025 – Apr 2026',
     type: 'RESEARCH',
-    tags: ['HuggingFace', 'LLMs', 'PyTorch', 'NLP', 'Python', 'FastAPI'],
+    tags: ['HuggingFace', 'PyTorch', 'Python', 'FastAPI'],
     bullets: [
       'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
       'Co-authored ”Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning,” accepted to Findings of ACL 2026.'
@@ -251,9 +251,9 @@ function Experience() {
                 ))}
               </ul>
               <div className="expTags">
-                {e.tags.map((t, j) => (
+                {/* {e.tags.map((t, j) => (
                   <span key={j} className="expTag">{t}</span>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
