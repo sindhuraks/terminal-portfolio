@@ -9,60 +9,65 @@ import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const ABOUT_DATA = [
-  { key: 'location',  val: '"Gainesville, FL"' },
-  { key: 'interests', val: '["backend", "llms​", "ai agents", "data engineering"]' },
-  { key: 'education', val: '"CS @ University of Florida"' },
+  { key: 'location',  val: '"Bentonville, AR"' },
+  { key: 'interests', val: '["backend", "genai"]' },
+  { key: 'education', val: '"CS @ University of Florida | Go Gators!🐊"' },
 ];
 
 const SKILLS = [
   {
     tag: 'LANGUAGES',
-    title: 'CORE STACK',
-    items: ['Python', 'Java', 'JavaScript', 'SQL', 'Go'],
+    title: 'LANGUAGES',
+    items: ['Python', 'Java', 'JavaScript', 'Go'],
   },
   {
     tag: 'FRONTEND',
-    title: 'UI / CLIENT',
-    items: ['React', 'Next.js', 'JavaScript', 'CSS'],
+    title: 'FRONTEND',
+    items: ['React', 'Next.js'],
   },
   {
     tag: 'BACKEND',
-    title: 'SERVER / API',
-    items: ['Node.js / Express', 'Python / FastAPI', 'Spring Boot', 'Go', 'REST APIs'],
+    title: 'BACKEND',
+    items: ['FastAPI', 'Spring Boot', 'Node.js (Express)', 'Transact T24'],
   },
   {
-    tag: 'AI / ML',
-    title: 'INTELLIGENCE',
-    items: ['LangChain', 'HuggingFace', 'PyTorch', 'spaCy', 'LLM Integration'],
+    // tag: 'AI / ML',
+    title: 'AI / ML',
+    items: ['LangChain', 'HuggingFace', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'],
   },
   {
-    tag: 'DATABASES',
-    title: 'DATA LAYER',
+    tag: 'DATA',
+    title: 'DATA',
     items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'],
   },
   {
     tag: 'DEVOPS',
-    title: 'INFRA / CLOUD',
-    items: ['Docker', 'Apache Kafka', 'Git / JIRA', 'AWS', 'Apptainer'],
+    title: 'DEVOPS',
+    items: ['Docker', 'Git', 'AWS', 'Apptainer', 'Kubernetes'],
   },
     {
-    tag: 'DATA',
-    title: 'DATA PROCESSING',
-    items: ['Numpy', 'Pandas'],
+    tag: 'MESSAGE QUEUE(S)',
+    title: 'MESSAGE QUEUE(S)',
+    items: ['RabbitMQ', 'Apache Kafka'],
   },
+  //   {
+  //   tag: 'DATA',
+  //   title: 'DATA PROCESSING',
+  //   items: ['Numpy', 'Pandas'],
+  // },
 ];
 
 const EXPERIENCE = [
   {
     role: 'Software Engineer Apprentice',
-    company: 'American Express',
+    company: 'UF WiCSE | UF ACM-W',
     location: 'Gainesville, FL',
     period: 'Jan 2026 – Apr 2026',
     type: 'APPRENTICESHIP',
     tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs', 'React.js', 'Next.js'],
     bullets: [
-      'Built Spring Boot microservices for log anomaly detection, integrating OpenAI, Claude, and Llama APIs; delivered up to 95% correctness and relevance and 90% completeness for automated root-cause analysis.',
-      'Implemented LLM-as-a-Judge (Claude Sonnet) and anomaly recurrence detection, improving response quality to 90–95% clarity/relevance and boosting correctness/completeness by 20–40%.',
+      'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages and identify their first occurrence and integrated OpenAI, Claude, and Llama APIs for automated log analysis.',
+      'Implemented LLM-as-a-Judge (Claude Sonnet) to evaluate responses on correctness, completeness, clarity, and answer relevance, improving response quality to 90–95% for clarity/relevance and 85–90% for correctness/completeness.',
     ],
   },
   {
@@ -73,9 +78,8 @@ const EXPERIENCE = [
     type: 'RESEARCH',
     tags: ['HuggingFace', 'LLMs', 'PyTorch', 'NLP', 'Python', 'FastAPI'],
     bullets: [
-      'Leveraged HuggingFace transformers and LLMs to enhance model reasoning through Chain of Thought prompting.',
-      'Contributing to research on building, fine-tuning, and evaluating NLP models for explainable and trustworthy QA systems.',
-      'Contributing to research involving agent safety evaluation.'
+      'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
+      'Co-authored ”Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning,” accepted to Findings of ACL 2026.'
     ],
   },
   {
@@ -86,9 +90,9 @@ const EXPERIENCE = [
     type: 'FULL-TIME',
     tags: ['JBase', 'SQL', 'Java', 'REST APIs', 'Transact T24'],
     bullets: [
-      'Designed and integrated full-stack asset finance solutions; collaborated with cross-functional teams for seamless module integration.',
-      'Delivered high-performance code with 95% test coverage.',
-      'Led mentoring sessions for new engineers improving onboarding speed.',
+      'Built scalable backend solutions for asset evaluation, lease lifecycles, and payment processing.',
+      'Delivered high-performance code with 95% test coverage; resolved production-level bugs efficiently.',
+      'Collaborated in agile environment, participating in sprint planning, daily stand-ups, code reviews, and iterative feature delivery.',
     ],
   },
   {
@@ -97,7 +101,7 @@ const EXPERIENCE = [
     location: 'Chennai, India',
     period: 'Nov 2020 – Nov 2021',
     type: 'FULL-TIME',
-    tags: ['SAP'],
+    tags: ['SAP', 'SAP ABAP'],
     bullets: [
       'Developed a custom UI feature for displaying purchase order discrepancies, enhancing visibility and decision-making using SAP tools.',
     ],
@@ -136,7 +140,7 @@ const PROJECTS = [
   {
     id: 'PROJECT_005',
     name: 'GenAI Log Analyzer',
-    description: 'A Python tool that queries incident data from APIs, stores it in a DuckDB database, identifies the traffic crash affecting the most people on a given date, and finds other incidents within a 1 km radius using geodesic distance.',
+    description: 'An AI-powered log analysis tool that ingests system logs, explains errors and root causes, recommends remediation actions using Claude, OpenAI, and Llama APIs, and evaluates responses with an LLM-as-a-Judge framework across correctness, completeness, clarity, relevance, and reasoning while identifying first occurrence and recurrence of anomalies.',
     tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs'],
     github: 'https://github.com/sindhuraks/genai-log-analyzer',
   },
@@ -144,7 +148,7 @@ const PROJECTS = [
     id: 'PROJECT_006',
     name: 'Matrix.dev',
     description: 'A terminal-inspired portfolio exploring backend systems, AI agents, and intelligent software.',
-    tags: ['React', 'HTML', 'CSS'],
+    tags: ['React', 'HTML', 'CSS', 'Next.js'],
     github: 'https://github.com/sindhuraks/terminal-portfolio',
   },
 ];
@@ -161,10 +165,7 @@ function WhoAmI() {
         <h3 className="whoHello">HELLO, THERE();</h3>
 
         <p className="whoBio">
-          &gt; Compiling ideas into systems, rendering logic into interfaces, and shipping code that refuses to break. <br></br> <br></br>
-          &gt; I love working with backend frameworks to build scalable services and clean APIs,
-          while also shaping intuitive web interfaces. <br></br> <br></br> 
-          &gt; Particularly excited about integrating LLMs to build smarter, more interactive software.
+          &gt; Compiling ideas into systems and shipping code that refuses to break. <br></br> <br></br>
         </p>
 
         <div className="whoCardDivider" />
@@ -192,12 +193,12 @@ function Skills() {
   return (
     <section id="skills" className="section">
       <span className="sectionTag">02 // SKILLS</span>
-      <h2 className="whoTitle">$capabilities</h2>
+      <h2 className="whoTitle">$skills</h2>
       <div className="skillsGrid">
         {SKILLS.map((s, i) => (
           <div key={i} className="skillCard">
             <div className="skillCardHeader">
-              <span className="skillCardTag">── {s.tag}</span>
+              {/* <span className="skillCardTag">── {s.tag}</span> */}
               <h3 className="skillCardTitle">{s.title}</h3>
             </div>
             <ul className="skillList">
@@ -220,7 +221,7 @@ function Experience() {
   return (
     <section id="experience" className="section">
       <span className="sectionTag">03 // EXPERIENCE</span>
-      <h2 className="whoTitle">$work_log</h2>
+      <h2 className="whoTitle">$worklog</h2>
       <div className="expList">
         {EXPERIENCE.map((e, i) => (
           <div key={i} className="expCard">
