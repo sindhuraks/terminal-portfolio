@@ -66,7 +66,7 @@ const EXPERIENCE = [
     type: 'APPRENTICESHIP',
     tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs', 'React.js', 'Next.js'],
     bullets: [
-      'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages and identify their first occurrence and integrated OpenAI, Claude, and Llama APIs for automated log analysis.',
+      'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages, identify their first occurrence, integrating OpenAI, Claude, and Llama APIs for automated log analysis; added retry mechanism for API overload failures to improve resilience.',
       'Implemented LLM-as-a-Judge (Claude Sonnet) to evaluate responses on correctness, completeness, clarity, and answer relevance, improving response quality to 90–95% for clarity/relevance and 85–90% for correctness/completeness.',
     ],
   },
@@ -90,9 +90,10 @@ const EXPERIENCE = [
     type: 'FULL-TIME',
     tags: ['JBase', 'SQL', 'Java', 'REST APIs', 'Transact T24'],
     bullets: [
-      'Built scalable backend solutions for asset evaluation, lease lifecycles, and payment processing.',
-      'Delivered high-performance code with 95% test coverage; resolved production-level bugs efficiently.',
+      'Built scalable backend solutions for asset lease lifecycle, bill generation, payment processing and settlement; automating recurring bill schedules across 2000+ active arrangement contracts with time-triggered payment workflows.',
+      'Delivered high-performance code with 95% test coverage, resulting in consistently low production defect rates and minimal need for post-release hotfixes across core asset-finance workflows.',
       'Collaborated in agile environment, participating in sprint planning, daily stand-ups, code reviews, and iterative feature delivery.',
+      'Resolved client and production defects with low MTTR; ensuring 100% on-time release delivery.',
     ],
   },
   {
