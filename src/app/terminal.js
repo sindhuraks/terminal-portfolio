@@ -74,7 +74,7 @@ const EXPERIENCE = [
     role: 'Graduate Research Assistant',
     company: 'Trustworthy Engineered Autonomy Lab',
     location: 'Gainesville, FL',
-    period: 'Aug 2025 – Present',
+    period: 'Aug 2025 – Apr 2026',
     type: 'RESEARCH',
     tags: ['HuggingFace', 'LLMs', 'PyTorch', 'NLP', 'Python', 'FastAPI'],
     bullets: [
