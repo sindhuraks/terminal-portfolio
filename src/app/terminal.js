@@ -5,12 +5,13 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+// import Chatbot from './chatbot';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const ABOUT_DATA = [
-  { key: 'location',  val: '"Bentonville, AR"' },
-  { key: 'interests', val: '["backend", "genai"]' },
+  // { key: 'location',  val: '"Bentonville, AR"' },
+  { key: 'interests', val: '["backend", "ai/ml"]' },
   { key: 'education', val: '"CS @ University of Florida | Go Gators!🐊"' },
 ];
 
@@ -78,7 +79,8 @@ const EXPERIENCE = [
     type: 'RESEARCH',
     tags: ['HuggingFace', 'PyTorch', 'Python', 'FastAPI'],
     bullets: [
-      'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
+      //'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
+      'Built a FastAPI multi-GPU inference service for Llama, Qwen, and Gemma using HuggingFace Transformers, incorporating Chain-of-Thought prompting and analyzing latency, token probabilities, and top-50 logits.',
       'Co-authored ”Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning,” accepted to Findings of ACL 2026.'
     ],
   },
@@ -154,6 +156,24 @@ const PROJECTS = [
   },
 ];
 
+const RESEARCH = [
+  {
+    id: 'PAPER_001',
+    title: 'Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning',
+    authors: [
+      'Zhenjiang Mao*',
+      'Anirudhh Venkat*',
+      'Artem Bisliouk',
+      'Akshat Kothiyal',
+      'Sindhura Kumbakonam Subramanian',
+      'Saithej Singhu',
+      'Ivan Ruchkin',
+    ],
+    venue: 'Findings of ACL',
+    year: 2026,
+    arxiv: 'https://arxiv.org/abs/2601.13387',
+  },
+];
 
 function WhoAmI() {
 
@@ -292,10 +312,44 @@ function Projects() {
   )
 }
 
+const ME = 'Sindhura Kumbakonam Subramanian';
+
+function Research() {
+   return (
+    <section id="research" className="section">
+      <span className="sectionTag">05 // RESEARCH</span>
+      <h2 className="whoTitle">$papers</h2>
+      <div className="resList">
+        {RESEARCH.map((r, i) => (
+          <div key={i} className="projCard">
+            <div className="projCardTop">
+              <span className="projId">{r.id}</span>
+              <span className="projPeriod">{r.year}</span>
+            </div>
+            <h3 className="projName">{r.title}</h3>
+            <p className="projDesc">
+              {r.authors.map((a, j) => (
+                <span key={j}>
+                  {a === ME ? <strong className="resMe">{a}</strong> : a}
+                  {j < r.authors.length - 1 && ', '}
+                </span>
+              ))}
+            </p>
+            <p className="projDesc">Accepted to {r.venue}, {r.year}</p>
+            <a href={r.arxiv} target="_blank" rel="noopener noreferrer" className="projLink">
+              VIEW ON ARXIV →
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function Contact() {
   return (
     <section id="contact" className="section">
-      <span className="sectionTag">05 // CONTACT</span>
+      <span className="sectionTag">06 // CONTACT</span>
       <h2 className="whoTitle">$connect</h2>
         <p className="connect">
           &gt; I'm open to new roles, collaborations, and interesting conversations. <br></br> <br></br>
@@ -390,6 +444,7 @@ export default function Terminal() {
             <a href="#skills" onClick={(e) => handleNavClick(e, 'skills')}>SKILLS</a>
             <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')}>EXPERIENCE</a>
             <a href="#projects" onClick={(e) => handleNavClick(e, 'projects')}>PROJECTS</a>
+            <a href="#research" onClick={(e) => handleNavClick(e, 'research')}>RESEARCH</a>
             <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>CONTACT</a>
           </div>
         </div>
@@ -417,7 +472,9 @@ export default function Terminal() {
       <Skills />
       <Experience />
       <Projects />
+      <Research />
       <Contact />
+      {/* <Chatbot /> */}
       {showTopBtn && (
         <button className="scrollTopBtn" onClick={scrollToTop} aria-label="Scroll to top"> ↑ </button>
       )}
