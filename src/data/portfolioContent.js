@@ -6,12 +6,14 @@ const ABOUT_DATA = [
 
 const SKILLS = [
   { tag: 'LANGUAGES', title: 'LANGUAGES', items: ['Python', 'Java', 'JavaScript', 'Go'] },
-  { tag: 'FRONTEND', title: 'FRONTEND', items: ['React', 'Next.js'] },
-  { tag: 'BACKEND', title: 'BACKEND', items: ['FastAPI', 'Spring Boot', 'Node.js (Express)', 'Transact T24'] },
-  { title: 'AI / ML', items: ['LangChain', 'HuggingFace', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'] },
+//   { tag: 'FRONTEND', title: 'FRONTEND', items: ['React (Next.js)'] },
+  { tag: 'BACKEND & FRONTEND', title: 'BACKEND & FRONTEND', items: ['Spring Boot', 'FastAPI','Node.js (Express)', 'React (Next.js)'] },
+  { title: 'AI / ML', items: ['HuggingFace', 'LangChain', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'] },
   { tag: 'DATA', title: 'DATA', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'] },
-  { tag: 'DEVOPS', title: 'DEVOPS', items: ['Docker', 'Git', 'AWS', 'Apptainer', 'Kubernetes'] },
+  { tag: 'DEVOPS', title: 'DEVOPS', items: ['Docker', 'Git', 'AWS', 'Kubernetes', 'Git'] },
   { tag: 'MESSAGE QUEUE(S)', title: 'MESSAGE QUEUE(S)', items: ['RabbitMQ', 'Apache Kafka'] },
+  { tag: 'ENTERPRISE PLATFORM(S)', title: 'ENTERPRISE PLATFORM(S)', items: ['Temenos Transact T24'] },
+  { tag: 'TOOLS', title: 'TOOLS', items: ['Postman', 'cURL'] },
 ];
 
 const EXPERIENCE = [
