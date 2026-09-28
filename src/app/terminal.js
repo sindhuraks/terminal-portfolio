@@ -5,175 +5,185 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
-// import Chatbot from './chatbot';
+import Chatbot from './chatbot';
+import {
+  PROFILE,
+  ABOUT_DATA,
+  SKILLS,
+  EXPERIENCE,
+  PROJECTS,
+  RESEARCH,
+  ME,
+  CONTACT,
+} from '../data/portfolioContent';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
-const ABOUT_DATA = [
-  // { key: 'location',  val: '"Bentonville, AR"' },
-  { key: 'interests', val: '["backend", "ai/ml"]' },
-  { key: 'education', val: '"CS @ University of Florida | Go Gators!🐊"' },
-];
+// const ABOUT_DATA = [
+//   // { key: 'location',  val: '"Bentonville, AR"' },
+//   { key: 'interests', val: '["backend", "ai/ml"]' },
+//   { key: 'education', val: '"CS @ University of Florida | Go Gators!🐊"' },
+// ];
 
-const SKILLS = [
-  {
-    tag: 'LANGUAGES',
-    title: 'LANGUAGES',
-    items: ['Python', 'Java', 'JavaScript', 'Go'],
-  },
-  {
-    tag: 'FRONTEND',
-    title: 'FRONTEND',
-    items: ['React', 'Next.js'],
-  },
-  {
-    tag: 'BACKEND',
-    title: 'BACKEND',
-    items: ['FastAPI', 'Spring Boot', 'Node.js (Express)', 'Transact T24'],
-  },
-  {
-    // tag: 'AI / ML',
-    title: 'AI / ML',
-    items: ['LangChain', 'HuggingFace', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'],
-  },
-  {
-    tag: 'DATA',
-    title: 'DATA',
-    items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'],
-  },
-  {
-    tag: 'DEVOPS',
-    title: 'DEVOPS',
-    items: ['Docker', 'Git', 'AWS', 'Apptainer', 'Kubernetes'],
-  },
-    {
-    tag: 'MESSAGE QUEUE(S)',
-    title: 'MESSAGE QUEUE(S)',
-    items: ['RabbitMQ', 'Apache Kafka'],
-  },
-  //   {
-  //   tag: 'DATA',
-  //   title: 'DATA PROCESSING',
-  //   items: ['Numpy', 'Pandas'],
-  // },
-];
+// const SKILLS = [
+//   {
+//     tag: 'LANGUAGES',
+//     title: 'LANGUAGES',
+//     items: ['Python', 'Java', 'JavaScript', 'Go'],
+//   },
+//   {
+//     tag: 'FRONTEND',
+//     title: 'FRONTEND',
+//     items: ['React', 'Next.js'],
+//   },
+//   {
+//     tag: 'BACKEND',
+//     title: 'BACKEND',
+//     items: ['FastAPI', 'Spring Boot', 'Node.js (Express)', 'Transact T24'],
+//   },
+//   {
+//     // tag: 'AI / ML',
+//     title: 'AI / ML',
+//     items: ['LangChain', 'HuggingFace', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'],
+//   },
+//   {
+//     tag: 'DATA',
+//     title: 'DATA',
+//     items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'],
+//   },
+//   {
+//     tag: 'DEVOPS',
+//     title: 'DEVOPS',
+//     items: ['Docker', 'Git', 'AWS', 'Apptainer', 'Kubernetes'],
+//   },
+//     {
+//     tag: 'MESSAGE QUEUE(S)',
+//     title: 'MESSAGE QUEUE(S)',
+//     items: ['RabbitMQ', 'Apache Kafka'],
+//   },
+//   //   {
+//   //   tag: 'DATA',
+//   //   title: 'DATA PROCESSING',
+//   //   items: ['Numpy', 'Pandas'],
+//   // },
+// ];
 
-const EXPERIENCE = [
-  {
-    role: 'Software Engineer Apprentice',
-    company: 'UF WiCSE | UF ACM-W',
-    location: 'Gainesville, FL',
-    period: 'Jan 2026 – Apr 2026',
-    type: 'APPRENTICESHIP',
-    tags: ['Spring Boot', 'PostgreSQL', 'LLM APIs', 'REST APIs', 'React.js', 'Next.js'],
-    bullets: [
-      'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages, identify their first occurrence, integrating OpenAI, Claude, and Llama APIs for automated log analysis; added retry mechanism for API overload failures to improve resilience.',
-      'Implemented LLM-as-a-Judge (Claude Sonnet) to evaluate responses on correctness, completeness, clarity, and answer relevance, improving response quality to 90–95% for clarity/relevance and 85–90% for correctness/completeness.',
-    ],
-  },
-  {
-    role: 'Graduate Research Assistant',
-    company: 'Trustworthy Engineered Autonomy Lab',
-    location: 'Gainesville, FL',
-    period: 'Aug 2025 – Apr 2026',
-    type: 'RESEARCH',
-    tags: ['HuggingFace', 'PyTorch', 'Python', 'FastAPI'],
-    bullets: [
-      //'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
-      'Built a FastAPI multi-GPU inference service for Llama, Qwen, and Gemma using HuggingFace Transformers, incorporating Chain-of-Thought prompting and analyzing latency, token probabilities, and top-50 logits.',
-      'Co-authored ”Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning,” accepted to Findings of ACL 2026.'
-    ],
-  },
-  {
-    role: 'Associate Product Engineer',
-    company: 'Temenos',
-    location: 'Chennai, India',
-    period: 'Nov 2021 – Jul 2024',
-    type: 'FULL-TIME',
-    tags: ['JBase', 'SQL', 'Java', 'REST APIs', 'Transact T24'],
-    bullets: [
-      'Built scalable backend solutions for asset lease lifecycle, bill generation, payment processing and settlement; automating recurring bill schedules across 2000+ active arrangement contracts with time-triggered payment workflows.',
-      'Delivered high-performance code with 95% test coverage, resulting in consistently low production defect rates and minimal need for post-release hotfixes across core asset-finance workflows.',
-      'Collaborated in agile environment, participating in sprint planning, daily stand-ups, code reviews, and iterative feature delivery.',
-      'Resolved client and production defects with low MTTR; ensuring 100% on-time release delivery.',
-    ],
-  },
-  {
-    role: 'Programmer Analyst',
-    company: 'Cognizant',
-    location: 'Chennai, India',
-    period: 'Nov 2020 – Nov 2021',
-    type: 'FULL-TIME',
-    tags: ['SAP', 'SAP ABAP'],
-    bullets: [
-      'Developed a custom UI feature for displaying purchase order discrepancies, enhancing visibility and decision-making using SAP tools.',
-    ],
-  },
-];
+// const EXPERIENCE = [
+//   {
+//     role: 'Software Engineer Apprentice',
+//     company: 'UF WiCSE | UF ACM-W',
+//     location: 'Gainesville, FL',
+//     period: 'Jan 2026 – Apr 2026',
+//     type: 'APPRENTICESHIP',
+//     //tags: ['Spring Boot', 'PostgreSQL', 'LLM APIs', 'REST APIs', 'React.js', 'Next.js'],
+//     bullets: [
+//       'Built Spring Boot microservices backed by a PostgreSQL database to explain log messages, identify their first occurrence, integrating OpenAI, Claude, and Llama APIs for automated log analysis; added retry mechanism for API overload failures to improve resilience.',
+//       'Implemented LLM-as-a-Judge (Claude Sonnet) to evaluate responses on correctness, completeness, clarity, and answer relevance, improving response quality to 90–95% for clarity/relevance and 85–90% for correctness/completeness.',
+//     ],
+//   },
+//   {
+//     role: 'Graduate Research Assistant',
+//     company: 'Trustworthy Engineered Autonomy Lab',
+//     location: 'Gainesville, FL',
+//     period: 'Aug 2025 – Apr 2026',
+//     type: 'RESEARCH',
+//     //tags: ['HuggingFace', 'PyTorch', 'Python', 'FastAPI'],
+//     bullets: [
+//       //'Leveraged Hugging Face transformers and LLMs to enhance model reasoning through Chain of Thought prompting, improving performance via self-consistency across multiple sampled reasoning paths.',
+//       'Built a FastAPI multi-GPU inference service for Llama, Qwen, and Gemma using HuggingFace Transformers, incorporating Chain-of-Thought prompting and analyzing latency, token probabilities, and top-50 logits.',
+//       'Co-authored ”Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning,” accepted to Findings of ACL 2026.'
+//     ],
+//   },
+//   {
+//     role: 'Associate Product Engineer',
+//     company: 'Temenos',
+//     location: 'Chennai, India',
+//     period: 'Nov 2021 – Jul 2024',
+//     type: 'FULL-TIME',
+//     //tags: ['JBase', 'SQL', 'Java', 'REST APIs', 'Transact T24'],
+//     bullets: [
+//       'Built scalable backend solutions for asset lease lifecycle, bill generation, payment processing and settlement; automating recurring bill schedules across 2000+ active arrangement contracts with time-triggered payment workflows.',
+//       'Delivered high-performance code with 95% test coverage, resulting in consistently low production defect rates and minimal need for post-release hotfixes across core asset-finance workflows.',
+//       'Collaborated in agile environment, participating in sprint planning, daily stand-ups, code reviews, and iterative feature delivery.',
+//       'Resolved client and production defects with low MTTR; ensuring 100% on-time release delivery.',
+//     ],
+//   },
+//   {
+//     role: 'Programmer Analyst',
+//     company: 'Cognizant',
+//     location: 'Chennai, India',
+//     period: 'Nov 2020 – Nov 2021',
+//     type: 'FULL-TIME',
+//     //tags: ['SAP', 'SAP ABAP'],
+//     bullets: [
+//       'Developed a custom UI feature for displaying purchase order discrepancies, enhancing visibility and decision-making using SAP tools.',
+//     ],
+//   },
+// ];
 
-const PROJECTS = [
-  {
-    id: 'PROJECT_001',
-    name: 'Reddit Clone',
-    description: 'A Reddit simulator built with the actor model, supporting account registration, subreddit management, posting, commenting, voting, and direct messaging functionalities.',
-    tags: ['Go', 'Protoactor', 'Protobuf', 'Git'],
-    github: 'https://github.com/sindhuraks/RedditClone',
-  },
-  {
-    id: 'PROJECT_002',
-    name: 'StartupNexus',
-    description: 'A responsive web app for startup collaboration, featuring user feeds, profiles, and full post CRUD operations.',
-    tags: ['React', 'Next.js', 'Go'],
-    github: 'https://github.com/sindhuraks/StartupNexus',
-  },
-    {
-    id: 'PROJECT_003',
-    name: 'Incident Radius Analyzer',
-    description: 'A Python tool that queries incident data from APIs, stores it in a DuckDB database, identifies the traffic crash affecting the most people on a given date, and finds other incidents within a 1 km radius using geodesic distance.',
-    tags: ['Python', 'DuckDB'],
-    github: 'https://github.com/sindhuraks/cis6930sp25-project1',
-  },
-  {
-    id: 'PROJECT_004',
-    name: 'Data Redaction Platform',
-    description: 'A redaction system for sensitive information in PDF documents using Named Entity Recognition (NER) and coreference resolution to redact specified names and entities.',
-    tags: ['Python', 'spaCy', 'Apptainer', 'NER'],
-    github: 'https://github.com/sindhuraks/cis6930sp25-project2',
-  },
-  {
-    id: 'PROJECT_005',
-    name: 'GenAI Log Analyzer',
-    description: 'An AI-powered log analysis tool that ingests system logs, explains errors and root causes, recommends remediation actions using Claude, OpenAI, and Llama APIs, and evaluates responses with an LLM-as-a-Judge framework across correctness, completeness, clarity, relevance, and reasoning while identifying first occurrence and recurrence of anomalies.',
-    tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs'],
-    github: 'https://github.com/sindhuraks/genai-log-analyzer',
-  },
-  {
-    id: 'PROJECT_006',
-    name: 'Matrix.dev',
-    description: 'A terminal-inspired portfolio exploring backend systems, AI agents, and intelligent software.',
-    tags: ['React', 'HTML', 'CSS', 'Next.js'],
-    github: 'https://github.com/sindhuraks/terminal-portfolio',
-  },
-];
+// const PROJECTS = [
+//   {
+//     id: 'PROJECT_001',
+//     name: 'Reddit Clone',
+//     description: 'A Reddit simulator built with the actor model, supporting account registration, subreddit management, posting, commenting, voting, and direct messaging functionalities.',
+//     tags: ['Go', 'Protoactor', 'Protobuf', 'Git'],
+//     github: 'https://github.com/sindhuraks/RedditClone',
+//   },
+//   {
+//     id: 'PROJECT_002',
+//     name: 'StartupNexus',
+//     description: 'A responsive web app for startup collaboration, featuring user feeds, profiles, and full post CRUD operations.',
+//     tags: ['React', 'Next.js', 'Go'],
+//     github: 'https://github.com/sindhuraks/StartupNexus',
+//   },
+//     {
+//     id: 'PROJECT_003',
+//     name: 'Incident Radius Analyzer',
+//     description: 'A Python tool that queries incident data from APIs, stores it in a DuckDB database, identifies the traffic crash affecting the most people on a given date, and finds other incidents within a 1 km radius using geodesic distance.',
+//     tags: ['Python', 'DuckDB'],
+//     github: 'https://github.com/sindhuraks/cis6930sp25-project1',
+//   },
+//   {
+//     id: 'PROJECT_004',
+//     name: 'Data Redaction Platform',
+//     description: 'A redaction system for sensitive information in PDF documents using Named Entity Recognition (NER) and coreference resolution to redact specified names and entities.',
+//     tags: ['Python', 'spaCy', 'Apptainer', 'NER'],
+//     github: 'https://github.com/sindhuraks/cis6930sp25-project2',
+//   },
+//   {
+//     id: 'PROJECT_005',
+//     name: 'GenAI Log Analyzer',
+//     description: 'An AI-powered log analysis tool that ingests system logs, explains errors and root causes, recommends remediation actions using Claude, OpenAI, and Llama APIs, and evaluates responses with an LLM-as-a-Judge framework across correctness, completeness, clarity, relevance, and reasoning while identifying first occurrence and recurrence of anomalies.',
+//     tags: ['Spring Boot', 'PostgreSQL', 'LLMs', 'REST APIs'],
+//     github: 'https://github.com/sindhuraks/genai-log-analyzer',
+//   },
+//   {
+//     id: 'PROJECT_006',
+//     name: 'Matrix.dev',
+//     description: 'A terminal-inspired portfolio exploring backend systems, AI agents, and intelligent software.',
+//     tags: ['React', 'HTML', 'CSS', 'Next.js'],
+//     github: 'https://github.com/sindhuraks/terminal-portfolio',
+//   },
+// ];
 
-const RESEARCH = [
-  {
-    id: 'PAPER_001',
-    title: 'Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning',
-    authors: [
-      'Zhenjiang Mao*',
-      'Anirudhh Venkat*',
-      'Artem Bisliouk',
-      'Akshat Kothiyal',
-      'Sindhura Kumbakonam Subramanian',
-      'Saithej Singhu',
-      'Ivan Ruchkin',
-    ],
-    venue: 'Findings of ACL',
-    year: 2026,
-    arxiv: 'https://arxiv.org/abs/2601.13387',
-  },
-];
+// const RESEARCH = [
+//   {
+//     id: 'PAPER_001',
+//     title: 'Confidence over Time: Confidence Calibration with Temporal Logic for Large Language Model Reasoning',
+//     authors: [
+//       'Zhenjiang Mao*',
+//       'Anirudhh Venkat*',
+//       'Artem Bisliouk',
+//       'Akshat Kothiyal',
+//       'Sindhura Kumbakonam Subramanian',
+//       'Saithej Singhu',
+//       'Ivan Ruchkin',
+//     ],
+//     venue: 'Findings of ACL',
+//     year: 2026,
+//     arxiv: 'https://arxiv.org/abs/2601.13387',
+//   },
+// ];
 
 function WhoAmI() {
 
@@ -312,7 +322,7 @@ function Projects() {
   )
 }
 
-const ME = 'Sindhura Kumbakonam Subramanian';
+// const ME = 'Sindhura Kumbakonam Subramanian';
 
 function Research() {
    return (
@@ -474,7 +484,7 @@ export default function Terminal() {
       <Projects />
       <Research />
       <Contact />
-      {/* <Chatbot /> */}
+      <Chatbot />
       {showTopBtn && (
         <button className="scrollTopBtn" onClick={scrollToTop} aria-label="Scroll to top"> ↑ </button>
       )}

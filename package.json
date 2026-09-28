@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-embeddings": "node src/app/generate-embeddings.js",
+    "prebuild": "npm run generate-embeddings"
   },
   "dependencies": {
     "next": "15.3.8",
