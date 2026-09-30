@@ -1,4 +1,5 @@
 import embeddingsData from '../../../data/portfolioEmbeddings.json';
+import { trace, SpanStatusCode } from '@opentelemetry/api';
 
 export const runtime = 'nodejs';
 
@@ -24,6 +25,8 @@ Rules:
 - Keep answers concise (2-5 sentences) and conversational.
 - Politely decline anything unrelated to Sindhura's professional
   background.`;
+
+const tracer = trace.getTracer('chat-route');
 
 function cosineSimilarity(a, b) {
   let dot = 0, normA = 0, normB = 0;
@@ -73,19 +76,25 @@ async function generateAnswer(question, contextBlock, apiKey) {
 }
 
 export async function POST(request) {
+
+  const span = tracer.startSpan('chat_request');
+
   try {
     const { question } = await request.json();
 
     if (!question || typeof question !== 'string' || !question.trim()) {
       return Response.json({ error: 'question is required' }, { status: 400 });
+      span.setAttribute('error', 'question is required');
     }
     if (question.length > 1000) {
       return Response.json({ error: 'question too long' }, { status: 400 });
+      span.setAttribute('error', 'question too long');
     }
 
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       return Response.json({ error: 'Missing OPENAI_API_KEY' }, { status: 500 });
+      span.setAttribute('error', 'Missing OPENAI_API_KEY');
     }
 
     const queryEmbedding = await embedQuery(question, apiKey);
@@ -96,6 +105,9 @@ export async function POST(request) {
     return Response.json({ answer, sources: topChunks.map((c) => c.id) });
   } catch (err) {
     console.error('chat route error:', err);
-    return Response.json({ error: 'Something went wrong generating a response.' }, { status: 500 });
+    span.setStatus({ code: SpanStatusCode.ERROR, message: err.message });
+  } finally {
+    span.end();
   }
+    return Response.json({ error: 'Something went wrong generating a response.' }, { status: 500 });
 }
