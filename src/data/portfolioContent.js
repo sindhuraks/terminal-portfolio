@@ -12,8 +12,8 @@ const SKILLS = [
   { tag: 'DATA', title: 'DATA', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'] },
   { tag: 'DEVOPS', title: 'DEVOPS', items: ['Docker', 'Git', 'AWS', 'Kubernetes', 'Git'] },
   { tag: 'MESSAGE QUEUE(S)', title: 'MESSAGE QUEUE(S)', items: ['RabbitMQ', 'Apache Kafka'] },
-  { tag: 'ENTERPRISE PLATFORM(S)', title: 'ENTERPRISE PLATFORM(S)', items: ['Temenos Transact T24'] },
-  { tag: 'TOOLS', title: 'TOOLS', items: ['Postman', 'cURL'] },
+  //{ tag: 'ENTERPRISE PLATFORM(S)', title: 'ENTERPRISE PLATFORM(S)', items: ['Temenos Transact T24'] },
+  //{ tag: 'TOOLS', title: 'TOOLS', items: ['Postman', 'cURL'] },
 ];
 
 const EXPERIENCE = [
