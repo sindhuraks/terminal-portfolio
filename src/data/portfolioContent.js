@@ -9,9 +9,9 @@ const SKILLS = [
 //   { tag: 'FRONTEND', title: 'FRONTEND', items: ['React (Next.js)'] },
   { tag: 'BACKEND & FRONTEND', title: 'BACKEND & FRONTEND', items: ['Spring Boot', 'FastAPI','Node.js (Express)', 'React (Next.js)'] },
   { title: 'AI / ML', items: ['HuggingFace', 'LangChain', 'PyTorch', 'spaCy', 'Prompt Engineering', 'RAG'] },
-  { tag: 'DATA', title: 'DATA', items: ['PostgreSQL', 'MongoDB', 'MySQL', 'SQLite', 'DuckDB'] },
-  { tag: 'DEVOPS', title: 'DEVOPS', items: ['Docker', 'Git', 'AWS', 'Kubernetes', 'Git'] },
-  { tag: 'MESSAGE QUEUE(S)', title: 'MESSAGE QUEUE(S)', items: ['RabbitMQ', 'Apache Kafka'] },
+  { tag: 'DATA', title: 'DATA', items: ['PostgreSQL', 'MySQL', 'SQLite', 'DuckDB', 'MongoDB'] },
+  { tag: 'DEVOPS & CLOUD', title: 'DEVOPS & CLOUD', items: ['Docker', 'Kubernetes', 'Git', 'AWS'] },
+  { tag: 'DATA PROCESSING', title: 'DATA PROCESSING', items: ['Apache Kafka', 'Apache Flink', 'RabbitMQ'] },
   //{ tag: 'ENTERPRISE PLATFORM(S)', title: 'ENTERPRISE PLATFORM(S)', items: ['Temenos Transact T24'] },
   //{ tag: 'TOOLS', title: 'TOOLS', items: ['Postman', 'cURL'] },
 ];

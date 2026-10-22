@@ -219,10 +219,34 @@ function WhoAmI() {
   )
 }
 
+const NOSQL_DBS = ['MongoDB'];
+
 function Skills() {
 
   return (
-    <section id="skills" className="section">
+    // <section id="skills" className="section">
+    //   <span className="sectionTag">02 // SKILLS</span>
+    //   <h2 className="whoTitle">$skills</h2>
+    //   <div className="skillsGrid">
+    //     {SKILLS.map((s, i) => (
+    //       <div key={i} className="skillCard">
+    //         <div className="skillCardHeader">
+    //           {/* <span className="skillCardTag">── {s.tag}</span> */}
+    //           <h3 className="skillCardTitle">{s.title}</h3>
+    //         </div>
+    //         <ul className="skillList">
+    //           {s.items.map((item, j) => (
+    //             <li key={j} className="skillItem">
+    //               <span className="skillDot">▸</span>
+    //               <span>{item}</span>
+    //             </li>
+    //           ))}
+    //         </ul>
+    //       </div>
+    //     ))}
+    //   </div>
+    // </section>
+        <section id="skills" className="section">
       <span className="sectionTag">02 // SKILLS</span>
       <h2 className="whoTitle">$skills</h2>
       <div className="skillsGrid">
@@ -233,12 +257,26 @@ function Skills() {
               <h3 className="skillCardTitle">{s.title}</h3>
             </div>
             <ul className="skillList">
-              {s.items.map((item, j) => (
-                <li key={j} className="skillItem">
-                  <span className="skillDot">▸</span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              {(s.title === 'DATA'
+                ? [
+                    { header: '-- SQL' },
+                    ...s.items.filter((it) => !NOSQL_DBS.includes(it)),
+                    { header: '-- NOSQL' },
+                    ...s.items.filter((it) => NOSQL_DBS.includes(it)),
+                  ]
+                : s.items
+              ).map((item, j) =>
+                item.header ? (
+                  <li key={j} className="skillItem">
+                    {item.header}
+                  </li>
+                ) : (
+                  <li key={j} className="skillItem">
+                    <span className="skillDot">▸</span>
+                    <span>{item}</span>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         ))}
